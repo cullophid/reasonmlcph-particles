@@ -1,6 +1,7 @@
 type canvas;
 type context;
 type event;
+let pi = 3.1415;
 
 external getClientX : event => float = "clientX" [@@bs.get];
 external getClientY : event => float = "clientY" [@@bs.get];
@@ -33,18 +34,18 @@ let drawVector context (px, py) (vx, vy) => {
     drawLine context px py (px +. vx) (py +. vy)
 };
 
-let colour2str (colour: Colour.t) => {
+/* let colour2str (colour: Colour.t) => {
     switch colour {
         | RGB r g b => {j|rgb($(r), $(g), $(b)|j}
         | RGBA r g b a => {j|rgba($(r), $(g), $(b), $(a))|j}
     };
-};
+}; */
 
 let drawCircle ::colour=(0,0,0) context (x, y) radius => {
     beginPath context;
     let (r, g, b) = colour;
     fillStyle context {j|rgb($(r), $(g), $(b))|j};
-    arc context x y radius 0. (2. *. Math.pi) false;
+    arc context x y radius 0. (2. *. pi) false;
     fill context;
 };
 
