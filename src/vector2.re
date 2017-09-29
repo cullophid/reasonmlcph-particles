@@ -9,21 +9,21 @@ let add (x1, y1) (x2, y2) => {
   (x1 +. x2, y1 +. y2)
 };
 
-let sub (x1, y1) (x2, y2) => {
+let sub (x2, y2) (x1, y1) => {
   (x1 -. x2, y1 -. y2)
 };
 
 let invert (x, y) => (-.x, -.y);
 
-let mul (x, y) scalar => (x *. scalar, y *. scalar);
+let mul scalar (x, y)  => (x *. scalar, y *. scalar);
 let angle2unitVector angle => ((sin (angle *. 2.0 *. pi)), (cos (angle *. 2.0 *. pi)));
 
-let div (x, y) scalar => (x /. scalar, y /. scalar);
+let div scalar (x, y)  => (x /. scalar, y /. scalar);
 let length (x, y) => sqrt (x *. x +. y *. y);
 let length2 (x, y) => (x *. x +. y *. y);
 let normalise vector => {
   let l = length vector;
-  div vector l;
+  div l vector;
 };
 
 let vector2angle vector => {

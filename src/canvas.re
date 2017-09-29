@@ -17,6 +17,7 @@ external moveTo : context => float => float => unit = "" [@@bs.send];
 external lineTo : context => float => float => unit = "" [@@bs.send];
 external beginPath : context => unit = "" [@@bs.send];
 external stroke : context => unit = "" [@@bs.send];
+external strokeText : context => string => float => float => unit = "strokeText" [@@bs.send];
 external fill : context => unit = "" [@@bs.send];
 external fillStyle : context => string => unit = "" [@@bs.set];
 external clearRect : context => int => int => int => int => unit = "" [@@bs.send];
@@ -48,6 +49,7 @@ let drawCircle ::colour=(0,0,0) context (x, y) radius => {
     arc context x y radius 0. (2. *. pi) false;
     fill context;
 };
+
 
 let canvas = getElementById "canvas";
 let clearCanvas context => {
